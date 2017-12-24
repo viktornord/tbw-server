@@ -1,4 +1,3 @@
-const {omit: _omit} = require('lodash');
 const router = require('express').Router();
 
 const authMiddleware = require('../auth/auth-middleware');

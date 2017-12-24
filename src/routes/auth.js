@@ -1,4 +1,3 @@
-const {omit: _omit} = require('lodash');
 const createError = require('http-errors');
 const router = require('express').Router();
 
@@ -14,8 +13,9 @@ async function tokenPOST(req, res, next) {
     const {email, password} = req.body;
     const user = await User.findUserByEmail(email);
     if (user && await auth.crypt.verifyPassword(password, user.password)) {
-      const accessToken = await auth.token.sign({id: user._id});
-      return res.send({accessToken, user: _omit(user, ['password'])});
+      const userInfo = {_id: user._id};
+      const accessToken = await auth.token.sign(userInfo);
+      return res.send({accessToken, user: userInfo});
     }
     next(createError(401, 'Unauthorized'));
   } catch (error) {

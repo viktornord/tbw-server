@@ -6,7 +6,7 @@ const User = require('../src/db/models/user');
 const request = supertest(`http://localhost:${process.env.PORT}/v1`);
 
 describe('user-spec', () => {
-  beforeEach(async () => {
+  afterEach(async () => {
     await User.remove({});
   });
 
