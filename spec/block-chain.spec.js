@@ -13,7 +13,8 @@ describe('block-chain-spec', () => {
   beforeAll(async () => {
     user = await new User({
       email: 'test@test.com',
-      password: crypto.pbkdf2Sync('test', process.env.TBW_SALT, 10, 64, 'sha512').toString('hex')
+      password: crypto.pbkdf2Sync('test', process.env.TBW_SALT, 10, 64, 'sha512').toString('hex'),
+      account: '1234'
     }).save();
     authHeader = `Bearer ${await token.sign({_id: user._id})}`;
   });

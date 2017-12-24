@@ -12,25 +12,35 @@ module.exports = router;
 
 async function transactionPOST(req, res, next) {
   try {
-    const {amount, to} = req.body;
-    if (amount > 0) {
-      const transaction = await new Transaction({
-        from: req.userData.account,
-        amount,
-        to
-      }).save();
-      await User.updateBalance(req.userData._id, -transaction.amount);
+    const {amount, to: destinationAccount} = req.body;
+    if (destinationAccount === req.userData.account) {
 
-      res.send(transaction);
-    } else {
-      next(createError(400, 'Not valid amount'));
+      return next(createError(400, 'You cannot transfer coins to yourself'));
     }
+    if (typeof amount !== 'number' || Number.isNaN(amount) || amount <= 0) {
+
+      return next(createError(400, 'Not valid amount'));
+    }
+    if (! await User.isAccountExist(destinationAccount)) {
+
+      return next(createError(400, 'Destination account does not exist'));
+    }
+    await User.updateBalance(destinationAccount, amount);
+    await User.updateBalance(req.userData.account, -amount);
+    const transaction = await new Transaction({
+      from: req.userData.account,
+      amount,
+      to: destinationAccount
+    }).save();
+
+    res.send(transaction);
   } catch (err) {
     next(err);
   }
 }
 async function transactionListGET(req, res, next) {
   try {
+    console.log('--------------->', req.userData.account);
     const transactions = await Transaction.getUserTransactions(req.userData.account);
     res.send(transactions);
   } catch (err) {

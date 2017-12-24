@@ -20,12 +20,12 @@ const blockSchema = new mongoose.Schema({
     proof: mongooseTypes.Number
   },
   previousHash: mongooseTypes.String
-});
+}, {retainKeyOrder: true});
 
 blockSchema.pre('save', function (next) {
   try {
     this.createdAt = Date.now();
-    const hashData  = `${this.index}.${this.createdAt}.${this.data.proof}.${this.previousHash}`;
+    const hashData = `${this.index}.${this.createdAt}.${this.data.proof}.${this.previousHash}`;
     this.hash = crypto.createHash('sha256').update(hashData).digest('hex').toString();
     next();
   } catch (err) {

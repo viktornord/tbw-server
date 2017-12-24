@@ -27,7 +27,7 @@ async function mineCoinGET(req, res, next) {
       previousHash: lastBlock ? lastBlock.hash : ''
     }).save();
     // update user balance with mined coin
-    await User.updateBalance(req.userData._id, 1);
+    await User.updateBalance(req.userData.account, 1);
     res.send(block);
   } catch(err) {
     next(err);

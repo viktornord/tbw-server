@@ -28,14 +28,19 @@ Object.assign(User, {
     return (await this.findOne({email}).count()) > 0;
   },
 
+  async isAccountExist(account) {
+
+    return (await this.findOne({account}).count()) > 0;
+  },
+
   findUserById(_id) {
 
     return this.findOne({_id}, {password: 0});
   },
 
-  updateBalance(_id, coins) {
+  updateBalance(account, coins) {
 
-    return this.update({_id}, {$inc: {balance: coins}});
+    return this.update({account}, {$inc: {balance: coins}});
   }
 });
 
