@@ -1,4 +1,5 @@
-require('dotenv').config({config: '../../.env'});
+const path = require('path');
+require('dotenv').config({config: path.resolve(__dirname, '..', '.env')});
 const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');

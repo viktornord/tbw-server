@@ -4,15 +4,22 @@
   "main": "src/index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node src/app/index.js"
+    "start": "node src/index.js",
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine --x '**/spec/**'"
   },
   "dependencies": {
     "cors": "^2.8.4",
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "http-errors": "^1.6.2",
+    "istanbul": "v1.1.0-alpha.1",
     "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
     "mongoose": "^4.13.7"
+  },
+  "devDependencies": {
+    "jasmine": "^2.8.0",
+    "jasmine-expect": "^3.8.1",
+    "supertest": "^3.0.0"
   }
 }

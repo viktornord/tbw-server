@@ -31,9 +31,10 @@ async function userPOST(req, res, next) {
       email,
       password: await auth.crypt.encryptPassword(password)
     });
+    const userInfo = {_id: user._id};
+    const accessToken = await auth.token.sign(userInfo);
 
-    const accessToken = await auth.token.sign({id: user._id});
-    return res.send({accessToken, user: _omit(user.toObject(), ['password'])});
+    return res.send({accessToken, user: userInfo});
   } catch (error) {
     next(error);
   }
