@@ -2,6 +2,8 @@
 
 const user = require('./user');
 const auth = require('./auth');
+const blockChain = require('./block-chain');
+const transaction = require('./transaction');
 
 module.exports = {
   auth,
@@ -10,6 +12,8 @@ module.exports = {
 
 function applyRoutes(router) {
   router.use('/', user);
+  router.use('/', blockChain);
+  router.use('/', transaction);
 
   return router;
 }

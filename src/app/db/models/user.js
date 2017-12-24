@@ -4,7 +4,7 @@ const crypto = require('crypto');
 const {Types: mongooseTypes} = mongoose.Schema;
 
 const User = mongoose.model('User', new mongoose.Schema({
-  email: { type: String, index: true, unique: true, lowercase: true} ,
+  email: { type: mongooseTypes.String, index: true, unique: true, lowercase: true} ,
   password: mongooseTypes.String,
   account: {
     type: mongooseTypes.String,
@@ -31,6 +31,11 @@ Object.assign(User, {
   findUserById(_id) {
 
     return this.findOne({_id}, {password: 0});
+  },
+
+  updateBalance(_id, coins) {
+
+    return this.update({_id}, {$inc: {balance: coins}});
   }
 });
 
