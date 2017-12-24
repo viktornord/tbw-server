@@ -11,7 +11,7 @@ module.exports = async function authMiddleWare(req, res, next) {
   const [, accessToken] = /Bearer (.+)/.exec(authHeader) || [];
   try {
     const encoded = await token.verify(accessToken);
-    const user = await User.findOne({_id: encoded.id});
+    const user = await User.findOne({_id: encoded._id});
     user && (req.userData = {_id: user._id, account: user.account});
     user ?  next() : next(createError(401, 'Unauthorized'));
   } catch (error) {

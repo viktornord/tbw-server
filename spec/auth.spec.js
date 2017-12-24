@@ -1,6 +1,4 @@
-const {ObjectID} = require('mongodb');
 const crypto = require('crypto');
-const querystring = require('querystring');
 const supertest = require('supertest');
 const User = require('../src/db/models/user');
 
