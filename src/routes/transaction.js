@@ -40,7 +40,6 @@ async function transactionPOST(req, res, next) {
 }
 async function transactionListGET(req, res, next) {
   try {
-    console.log('--------------->', req.userData.account);
     const transactions = await Transaction.getUserTransactions(req.userData.account);
     res.send(transactions);
   } catch (err) {

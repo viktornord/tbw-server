@@ -1,11 +1,12 @@
 {
   "name": "tiniest-blockchain-server",
   "version": "1.0.0",
-  "main": "src/index.js",
+  "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node src/index.js",
-    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine"
+    "start": "node index.js",
+    "test": "./node_modules/.bin/istanbul cover ./node_modules/.bin/jasmine",
+    "build": "docker build -t viktor/tbw ."
   },
   "dependencies": {
     "cors": "^2.8.4",
