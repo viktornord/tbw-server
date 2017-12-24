@@ -20,4 +20,17 @@ transactionSchema.post('save', async function(transaction, next) {
 
 const Transaction = mongoose.model('Transaction', transactionSchema);
 
+
 module.exports = Transaction;
+
+Object.assign(Transaction, {
+  getUserTransactions(account) {
+
+    return this.find({
+      $or: [
+        {from: account},
+        {to: account}
+      ]
+    });
+  }
+});
