@@ -12,7 +12,7 @@ module.exports = async function authMiddleWare(req, res, next) {
   try {
     const encoded = await token.verify(accessToken);
     const user = await User.findOne({_id: encoded._id});
-    user && (req.userData = {_id: user._id, account: user.account});
+    user && (req.userData = {_id: user._id, account: user.account, balance: user.balance});
     user ?  next() : next(createError(401, 'Unauthorized'));
   } catch (error) {
     console.error(error);

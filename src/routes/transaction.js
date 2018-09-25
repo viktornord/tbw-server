@@ -13,7 +13,8 @@ module.exports = router;
 async function transactionPOST(req, res, next) {
   try {
     const {amount, to: destinationAccount} = req.body;
-    if (destinationAccount === req.userData.account) {
+    const {account, balance} = req.userData;
+    if (destinationAccount === account) {
 
       return next(createError(400, 'You cannot transfer coins to yourself'));
     }
@@ -24,6 +25,9 @@ async function transactionPOST(req, res, next) {
     if (! await User.isAccountExist(destinationAccount)) {
 
       return next(createError(400, 'Destination account does not exist'));
+    }
+    if (balance && balance < amount) {
+      return next(createError(400, 'Not enough coins on your account'));
     }
     await User.updateBalance(destinationAccount, amount);
     await User.updateBalance(req.userData.account, -amount);
