@@ -9,7 +9,6 @@ hooks:
       runas: ubuntu
   AfterInstall:
     - location: scripts/install-dependencies.sh
-      runas: ubuntu
   ApplicationStart:
     - location: scripts/start.sh
       runas: ubuntu
