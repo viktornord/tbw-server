@@ -18,6 +18,7 @@
     "mongoose": "^4.13.7"
   },
   "devDependencies": {
+    "aws-code-deploy": "^1.0.8",
     "jasmine": "^2.8.0",
     "jasmine-expect": "^3.8.1",
     "supertest": "^3.0.0"

@@ -4,6 +4,11 @@
 #
 version: 2
 jobs:
+  deploy:
+    production:
+      branch: master
+      commands:
+        - bash node_modules/aws-code-deploy/bin/aws-code-deploy.sh
   build:
     docker:
       # specify the version you desire here
@@ -42,4 +47,14 @@ jobs:
           path: coverage
           prefix: coverage
 
-
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
