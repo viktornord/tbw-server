@@ -13,6 +13,7 @@ jobs:
         AWS_CODE_DEPLOY_APP_SOURCE: $HOME/repo
         AWS_CODE_DEPLOY_S3_BUCKET: myyy-test-bucket
         AWS_CODE_DEPLOY_S3_FILENAME: "${CIRCLE_BUILD_NUM}#${CIRCLE_SHA1:0:7}.zip"
+    working_directory: ~/repo
     steps:
       - run: bash node_modules/aws-code-deploy/bin/aws-code-deploy.sh
   build:
