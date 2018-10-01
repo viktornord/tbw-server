@@ -5,9 +5,9 @@ files:
   destination: /home/ubuntu/my-app/
 hooks:
   BeforeInstall:
-  - location: scrpts/backup.sh
+    - location: scrpts/backup.sh
   AfterInstall:
-  - location: scrpts/install-dependencies.sh
+    - location: scrpts/install-dependencies.sh
   ApplicationStart:
-  - location: scripts/start.sh
-  - location: scripts/cleanup.sh
+    - location: scripts/start.sh
+    - location: scripts/cleanup.sh
