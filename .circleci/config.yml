@@ -10,8 +10,8 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run: npm install aws-code-deploy -g
-      - run: aws-code-deploy
+      - run: npm install aws-code-deploy --save-dev
+      - run: node_modules/aws-code-deploy/bin/aws-code-deploy.sh
   build:
     docker:
       # specify the version you desire here
@@ -54,10 +54,10 @@ workflows:
   version: 2
   build-and-deploy:
     jobs:
-      - build
+#      - build
       - deploy:
-          requires:
-            - build
+#          requires:
+#            - build
           filters:
             branches:
               only: master
