@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-  destination: ~/my-app/
+  destination: /home/ubuntu/my-app/
 hooks:
   BeforeInstall:
   - location: scrpts/backup.sh
