@@ -5,10 +5,8 @@
 version: 2
 jobs:
   deploy:
-    production:
-      branch: master
-      commands:
-        - bash node_modules/aws-code-deploy/bin/aws-code-deploy.sh
+    steps:
+      -run: bash node_modules/aws-code-deploy/bin/aws-code-deploy.sh
   build:
     docker:
       # specify the version you desire here
