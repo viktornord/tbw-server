@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-pm2 start /home/ubuntu/my-app/index.js --name "my-app"
+/home/ubuntu/my-app/node_modules/pm2 start /home/ubuntu/my-app/index.js --name "my-app"
