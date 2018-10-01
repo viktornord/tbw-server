@@ -16,8 +16,7 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run: pwd
-      - run: ls -l
+      - run: npm install
       - run: bash node_modules/aws-code-deploy/bin/aws-code-deploy.sh
   build:
     docker:
