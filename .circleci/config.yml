@@ -5,14 +5,8 @@
 version: 2
 jobs:
   deploy:
-    machine:
-      environment:
-        DEPLOY_DIR: ~/repo
-        AWS_CODE_DEPLOY_APPLICATION_NAME: name
-        AWS_CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: test
-        AWS_CODE_DEPLOY_APP_SOURCE: ~/repo
-        AWS_CODE_DEPLOY_S3_BUCKET: myyy-test-bucket
-        AWS_CODE_DEPLOY_S3_FILENAME: "${CIRCLE_BUILD_NUM}#${CIRCLE_SHA1:0:7}.zip"
+    docker:
+      - image: circleci/node:8.11
     working_directory: ~/repo
     steps:
       - checkout
