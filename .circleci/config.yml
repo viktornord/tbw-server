@@ -7,14 +7,15 @@ jobs:
   deploy:
     machine:
       environment:
-        DEPLOY_DIR: $HOME/repo
+        DEPLOY_DIR: ~/repo
         AWS_CODE_DEPLOY_APPLICATION_NAME: name
         AWS_CODE_DEPLOY_DEPLOYMENT_GROUP_NAME: test
-        AWS_CODE_DEPLOY_APP_SOURCE: $HOME/repo
+        AWS_CODE_DEPLOY_APP_SOURCE: ~/repo
         AWS_CODE_DEPLOY_S3_BUCKET: myyy-test-bucket
         AWS_CODE_DEPLOY_S3_FILENAME: "${CIRCLE_BUILD_NUM}#${CIRCLE_SHA1:0:7}.zip"
     working_directory: ~/repo
     steps:
+      - checkout
       - run: pwd
       - run: ls -l
       - run: bash node_modules/aws-code-deploy/bin/aws-code-deploy.sh
