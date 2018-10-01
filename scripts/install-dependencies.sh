@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 npm i
-cp ~/my-app.old/.env .env
+cp /home/ubuntu/my-app.old/.env .env

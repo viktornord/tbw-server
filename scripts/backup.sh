@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-mv ~/my-app ~/my-app.old
+mv /home/ubuntu/my-app /home/ubuntu/my-app.old
