@@ -10,4 +10,5 @@ hooks:
     - location: scripts/install-dependencies.sh
   ApplicationStart:
     - location: /home/ubuntu/start.sh
+     timeout: 10000
 #    - location: scripts/cleanup.sh
