@@ -9,5 +9,5 @@ hooks:
   AfterInstall:
     - location: scripts/install-dependencies.sh
   ApplicationStart:
-    - location: /home/ubuntu/test.sh
-    - location: scripts/cleanup.sh
+    - location: /home/ubuntu/start.sh
+#    - location: scripts/cleanup.sh
