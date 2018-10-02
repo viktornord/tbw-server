@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
-cd /home/ubuntu/my-app
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+cd $SCRIPTPATH/..
 npm i
-cp /home/ubuntu/my-app.old/.env /home/ubuntu/my-app/.env
+cp /home/ubuntu/my-app.old/.env .env
