@@ -3,6 +3,14 @@ os: linux
 files:
   - source: /
     destination: /home/ubuntu/my-app/
+permissions:
+  - object: /home/ubuntu
+    owner: ubuntu
+    group: ubuntu
+permissions:
+  - object: .
+    owner: ubuntu
+    group: ubuntu
 hooks:
   BeforeInstall:
     - location: scripts/backup.sh
@@ -10,5 +18,5 @@ hooks:
     - location: scripts/install-dependencies.sh
   ApplicationStart:
     - location: scripts/start.sh
-      runsAs: ubuntu
+      runsas: ubuntu
     - location: scripts/cleanup.sh
