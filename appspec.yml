@@ -19,4 +19,4 @@ hooks:
   ApplicationStart:
     - location: scripts/start.sh
       runsas: ubuntu
-    - location: scripts/cleanup.sh
+#    - location: scripts/cleanup.sh
