@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-cd /home/ubuntu
+cd /home/ubuntu/my-app/
 npm i
-cp my-app.old/.env my-app/.env
+cp /home/ununtu/my-app.old/.env /home/ubuntu/my-app/.env
