@@ -9,8 +9,8 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run: npm install aws-code-deploy --save-dev
-      - run: node_modules/aws-code-deploy/bin/aws-code-deploy.sh
+      - run: pip install awscli --upgrade --user
+      - run: aws deploy create-deployment  --application-name test --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name test  --description "My GitHub deployment demo" --github-location repository=viktornord/tbw-server,commitId=$(git rev-parse HEAD) --region eu-west-1
   build:
     docker:
       # specify the version you desire here
