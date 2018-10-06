@@ -7,16 +7,14 @@ permissions:
   - object: /home/ubuntu
     owner: ubuntu
     group: ubuntu
-permissions:
-  - object: .
-    owner: ubuntu
-    group: ubuntu
 hooks:
   BeforeInstall:
     - location: scripts/backup.sh
+      runas: ubuntu
   AfterInstall:
     - location: scripts/install-dependencies.sh
+      runas: ubuntu
   ApplicationStart:
     - location: scripts/start.sh
-      runsas: ubuntu
-#    - location: scripts/cleanup.sh
+    - location: scripts/cleanup.sh
+      runas: ubuntu
