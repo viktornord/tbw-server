@@ -9,8 +9,9 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run: pip install awscli --upgrade --user
-      - run: aws deploy create-deployment  --application-name test --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name test  --description "My GitHub deployment demo" --github-location repository=viktornord/tbw-server,commitId=$(git rev-parse HEAD) --region eu-west-1
+      - run: ssh ubuntu@my172.31.29.238 'cd ~/my-app && npm start'
+#      - run: pip install awscli --upgrade --user
+#      - run: aws deploy create-deployment  --application-name test --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name test  --description "My GitHub deployment demo" --github-location repository=viktornord/tbw-server,commitId=$(git rev-parse HEAD) --region eu-west-1
   build:
     docker:
       # specify the version you desire here
